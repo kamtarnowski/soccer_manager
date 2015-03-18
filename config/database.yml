@@ -1,0 +1,43 @@
+# PostgreSQL. Versions 8.2 and up are supported.
+#
+# Install the pg driver:
+#   gem install pg
+# On OS X with Homebrew:
+#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
+# On OS X with MacPorts:
+#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
+# On Windows:
+#   gem install pg
+#       Choose the win32 build.
+#       Install PostgreSQL and put its /bin directory on your path.
+#
+# Configure Using Gemfile
+# gem 'pg'
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+  host: localhost
+  port: 5432
+
+
+development:
+  <<: *default
+  database: soccer_manager_development
+  username: postgres
+  password: password
+
+test:
+  <<: *default
+  database: soccer_manager_test
+  username: postgres
+  password: password
+
+production:
+  <<: *default
+  database: soccer_manager_production
+  username: soccer_manager
+  password: <%= ENV['SOCCER_MANAGER_DATABASE_PASSWORD'] %>
