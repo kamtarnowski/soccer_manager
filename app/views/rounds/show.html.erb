@@ -1,0 +1,17 @@
+<table class="table table-responsive">
+  <tr>
+    <th>Mecz</th>
+    <th>Drużyna 1</th>
+    <th>Wynik dla Drużyny 1</th>
+    <th>Drużyna 2</th>
+    <th>Wynik dla Drużyny 2</th>
+  </tr>
+  <% @round.matches.each do |match| %>
+  <tr>
+    <td><%= "Mecz nr #{match.id}" %></td>
+    <td></td>
+
+  </tr>
+  <% end %>
+
+</table>

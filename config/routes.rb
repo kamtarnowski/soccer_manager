@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'seasons/update'
 
+  get 'rounds/show/:id' => 'rounds#show', as: :show_round
+
   get 'rounds/index'
 
 

@@ -5,7 +5,8 @@
   </tr>
   <% @rounds.each do |round| %>
   <tr>
-    <td><%= "Runda #{round.id}" %></td>
+
+    <td><%= link_to "Runda #{round.id}", show_round_path(round) %></td>
     <td><%= round.status %></td>
   </tr>
   <% end %>

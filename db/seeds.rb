@@ -13,3 +13,9 @@ Team.delete_all
 Season.delete_all
 
 Season.create(id: 1, status: 'inactive', number: 1)
+
+n = 1
+4.times do
+  Team.create(name: "Team #{n}")
+  n += 1
+end
