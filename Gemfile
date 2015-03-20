@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass'
 gem "autoprefixer-rails"
 gem 'simple_form'
+gem 'gritter'
 
 gem "better_errors", group: :development
 # bundle exec rake doc:rails generates the API under doc/api.

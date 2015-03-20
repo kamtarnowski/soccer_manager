@@ -1,0 +1,23 @@
+<table class="table table-responsive">
+  <tr>
+    <th>no.</th>
+    <th>Nazwa</th>
+    <th>Edycja</th>
+    <th>Usunięcie</th>
+  </tr>
+  <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.id %></td>
+        <td><%= team.name %></td>
+        <td><%= link_to 'Edycja', edit_team_path(team) %></td>
+        <td><%= link_to 'Usunięcie', teams_destroy_path(team), method: :delete %></td>
+      </tr>
+  <% end %>
+</table>
+<%= link_to 'Nowa drużyna', new_team_path %>
+
+<% if Team.count >= 4 && Team.count%2 == 0 %>
+
+<%= button_to('Rozpocznij Sezon', post_active_path(status: 'active'), :class => 'btn btn-large btn-primary')  %>
+
+<% end %>
