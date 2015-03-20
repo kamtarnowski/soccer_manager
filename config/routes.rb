@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'seasons/edit'
+
+  get 'seasons/update'
+
+  get 'rounds/index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
