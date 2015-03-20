@@ -12,6 +12,6 @@ Rails.application.routes.draw do
 
   delete 'teams/:id' => 'teams#destroy', as: :teams_destroy
 
-  post 'active' => 'seasons_controller#update', as: 'post_active'
+  post 'active' => 'seasons#update', as: 'post_active'
 
 end

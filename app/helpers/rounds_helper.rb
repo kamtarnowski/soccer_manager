@@ -2,8 +2,10 @@ module RoundsHelper
 
   def check_match(team, round)
     team.match_results.each do |mr|
-      if mr.match.round.id == round.id
-        return true
+      if mr.match.round.present?
+        if mr.match.round.id == round.id
+          return true
+        end
       end
     end
     false

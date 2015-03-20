@@ -18,7 +18,7 @@
 
 <script>
     <% flash.each do |key, value| %>
-    <%= add_gritter(value, :image => key, :title => "Komunikat:") %>
+    <%= add_gritter(value, :image => key, :title => "Komunikat:", nodom_wrap: true) %>
     <% end %>
 </script>
 </html>
