@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  before_action :season_active
 
   def index
     @teams = Team.all
@@ -11,11 +12,11 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if @team.save
-      redirect_to teams_path
       flash[:notice] = 'Dodano Drużynę'
+      redirect_to teams_path
     else
+      flash.now[:notice] = 'Nie dodano Drużyny'
       render 'new'
-      flash[:notice] = 'Nie dodano Drużyny'
     end
   end
 
@@ -29,8 +30,8 @@ class TeamsController < ApplicationController
       flash[:notice] = 'Zaktualizowano Drużynę'
       redirect_to root_path
     else
-      flash[:notice] = 'Nie zaktualizowano Drużyny'
-      redirect_to :back
+      flash.now[:notice] = 'Nie zaktualizowano Drużyny'
+      render :edit
     end
   end
 
@@ -47,5 +48,9 @@ class TeamsController < ApplicationController
 
   def team_params
     params.require(:team).permit(:name)
+  end
+
+  def season_active
+    redirect_to rounds_index_path if Season.find(1).status == 'active'
   end
 end

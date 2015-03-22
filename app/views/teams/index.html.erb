@@ -14,10 +14,11 @@
       </tr>
   <% end %>
 </table>
-<%= link_to 'Nowa drużyna', new_team_path %>
+<%= link_to 'Nowa drużyna', new_team_path, :class => 'btn btn-large btn-default' %>
 
 <% if Team.count >= 4 && Team.count%2 == 0 %>
 
 <%= button_to('Rozpocznij Sezon', post_active_path(status: 'active'), :class => 'btn btn-large btn-primary')  %>
 
 <% end %>
+

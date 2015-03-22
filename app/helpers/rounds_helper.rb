@@ -37,7 +37,7 @@ module RoundsHelper
         next if team == team2
         next if check_match(team2, @round)
         unless have_same_match?(team, team2)
-         @match = Match.create
+         @match = Match.create(round_id: @round.id)
           @match_results = MatchResult.create(match_id: @match.id, team_id: team.id )
           @match_results = MatchResult.create(match_id: @match.id, team_id: team2.id )
         end
