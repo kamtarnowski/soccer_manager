@@ -1,16 +1,5 @@
 module RoundsHelper
 
-  def check_match(team, round)
-    team.match_results.each do |mr|
-      if mr.match.round.present?
-        if mr.match.round.id == round.id
-          return true
-        end
-      end
-    end
-    false
-  end
-
   def have_same_match?(team1, team2)
     array1 = []
     array2 = []
@@ -20,29 +9,41 @@ module RoundsHelper
     team2.match_results.each do |mr|
       array2 << mr.match.id
     end
-    array1.each do |a1|
-      array2.each do |a2|
-       return true if a1 == a2
-      end
+    array1.each do |array|
+          return true if array2.include?(array)
     end
     false
   end
 
   def create_round(number)
-    @round = Round.create(status: 'new', number: number)
+    if number == 1
+      @round = Round.create(status: 'open', number: number)
+    else
+      @round = Round.create(status: 'incaccessible', number: number)
+    end
     @list = Team.all
     @list.each do |team|
-      next if check_match(team, @round)
+      next if has_same_round?(team, @round.id)
       @list.each do |team2|
         next if team == team2
-        next if check_match(team2, @round)
+        next if has_same_round?(team2, @round.id)
         unless have_same_match?(team, team2)
          @match = Match.create(round_id: @round.id)
-          @match_results = MatchResult.create(match_id: @match.id, team_id: team.id )
-          @match_results = MatchResult.create(match_id: @match.id, team_id: team2.id )
+          MatchResult.create(match_id: @match.id, team_id: team.id )
+          MatchResult.create(match_id: @match.id, team_id: team2.id )
+          break
         end
       end
     end
+  end
+
+  def has_same_round?(team, round)
+      team.match_results(true).each do |mr|
+        if mr.match.round_id == round
+          return true
+        end
+      end
+    false
   end
 
   def played_round(round)
@@ -61,7 +62,7 @@ module RoundsHelper
       else
         mr.score == 0
       end
-      mr.team.score = mr.team.score + mr.points
+      mr.team.score += mr.points
       end
     end
   end

@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "teams/index.html.erb", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+  10.times { FactoryGirlRails.build(:team) }
+
+  render
+
+  expect(rendered).to have_selector("tr", count: 11)
 end

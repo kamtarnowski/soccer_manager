@@ -11,4 +11,9 @@ class SeasonsController < ApplicationController
       flash[:notice] = 'Brak wystarczającej liczby Drużyn, bądź liczba ich jest nieparzysta.'
     end
   end
+
+  def index
+    @rounds = Round.all
+
+  end
 end

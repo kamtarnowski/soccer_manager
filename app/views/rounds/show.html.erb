@@ -1,3 +1,4 @@
+<%= simple_form_for :end_round, url: { action: :update, controller: 'match_results', round: params[:id] }, method: :patch do |f| %>
 <table class="table table-responsive">
   <tr>
     <th>Mecz</th>
@@ -6,12 +7,9 @@
     <th>Drużyna 2</th>
     <th>Wynik dla Drużyny 2</th>
   </tr>
-  <% @round.matches.each do |match| %>
-  <tr>
-    <td><%= "Mecz nr #{match.id}" %></td>
-    <td></td>
 
-  </tr>
-  <% end %>
+  <%= render 'listing_match_results', f: f %>
 
 </table>
+<%= f.button :submit, 'Zamknij Rundę', style: 'float:right', :class => 'btn btn-large btn-primary' %>
+<% end %>

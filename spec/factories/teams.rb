@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :team do
-    name "MyString"
-score 1
+    sequence(:name) { |n| "Team #{n}" }
+    score 0
   end
-
 end

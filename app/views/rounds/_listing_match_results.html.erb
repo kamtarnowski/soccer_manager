@@ -1,0 +1,13 @@
+<% @round.matches.each do |match| %>
+    <tr>
+      <td><%= "Mecz nr #{match.id}" %></td>
+      <% match.match_results.each do |mr| %>
+          <td><%= mr.team.name %></td>
+
+          <%= f.simple_fields_for mr, index: mr.id do |form| %>
+              <td><%= form.input :scores, collection: 0..10, default: 0, label: false %>
+              </td>
+          <% end %>
+      <% end %>
+    </tr>
+<% end %>

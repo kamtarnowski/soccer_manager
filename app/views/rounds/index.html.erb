@@ -5,10 +5,21 @@
   </tr>
   <% @rounds.each do |round| %>
   <tr>
-
-    <td><%= link_to "Runda #{round.id}", show_round_path(round) %></td>
-    <td><%= round.status %></td>
+    <% if round.status == 'closed' %>
+        <td><del><%= "Runda #{round.id}" %></del></td>
+        <td><%= round.status %></td>
+    <% elsif round.status == 'open' %>
+        <td><%= link_to "Runda #{round.id}", show_round_path(round) %></td>
+        <td><%= round.status %></td>
+    <% else %>
+        <td><%= "Runda #{round.id}" %></td>
+        <td><%= round.status %></td>
+    <% end %>
   </tr>
   <% end %>
 </table>
 
+<% if Round.active_rounds.blank? %>
+    <p>Rozegrano wszystkie kolejki, przejdź do podsumowania.</p><br>
+<%= link_to "Podsumowanie", seasons_path, class: 'btn btn-default' %>
+<% end %>

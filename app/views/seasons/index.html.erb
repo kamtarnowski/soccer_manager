@@ -1,0 +1,30 @@
+<div class="jumbotron">Terminarz:</div>
+
+<table class="table table-responsive">
+  <tr>
+    <th>Runda</th>
+    <th>Status</th>
+  </tr>
+  <% @rounds.each do |round| %>
+      <tr>
+        <% if round.status == 'closed' %>
+            <td><del><%= "Runda #{round.id}" %></del></td>
+            <td><%= round.status %></td>
+        <% elsif round.status == 'open' %>
+            <td><%= link_to "Runda #{round.id}", show_round_path(round) %></td>
+            <td><%= round.status %></td>
+        <% else %>
+            <td><%= "Runda #{round.id}" %></td>
+            <td><%= round.status %></td>
+        <% end %>
+      </tr>
+  <% end %>
+</table>
+
+<hr>
+
+<div class="jumbotron">Klasyfikacja Drużyn:</div>
+<table class="table table-responsive">
+
+
+</table>

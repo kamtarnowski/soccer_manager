@@ -5,6 +5,10 @@ class TeamsController < ApplicationController
     @teams = Team.all
   end
 
+  def index_classification
+
+  end
+
   def new
     @team = Team.new
   end
