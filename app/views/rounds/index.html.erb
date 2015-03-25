@@ -4,18 +4,33 @@
   <tr>
     <th>Runda</th>
     <th>Status</th>
+    <th>Wynik</th>
   </tr>
   <% @rounds.each do |round| %>
   <tr>
     <% if round.status == 'closed' %>
         <td><del><%= "Runda #{round.id}" %></del></td>
         <td><%= round.status %></td>
+        <td>
+        <% round.matches.each do |match| %>
+            <% match.match_results.each_with_index do |mr, index| %>
+                <% if index == 0 %>
+                   <em><%= mr.team.name %></em> <strong><%= mr.scores %></strong>&nbsp;:
+                <% else %>
+                    <strong><%= mr.scores %></strong> <em><%= mr.team.name %></em>
+                      <br>
+                <% end %>
+            <% end %>
+        <% end %>
+        </td>
     <% elsif round.status == 'open' %>
         <td><%= link_to "Runda #{round.id}", show_round_path(round) %></td>
         <td><%= round.status %></td>
+        <td>-</td>
     <% else %>
         <td><%= "Runda #{round.id}" %></td>
         <td><%= round.status %></td>
+        <td>-</td>
     <% end %>
   </tr>
   <% end %>
