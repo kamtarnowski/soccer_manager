@@ -14,6 +14,12 @@ class SeasonsController < ApplicationController
 
   def index
     @rounds = Round.all
+    @teams = Team.order(:place)
+    sort_by_place
+  end
 
+  def index_classification
+    @teams = Team.order(:place)
+    sort_by_place
   end
 end

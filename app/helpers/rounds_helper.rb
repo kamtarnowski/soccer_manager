@@ -51,18 +51,19 @@ module RoundsHelper
       max = 0
       min = 10000
       match.match_results.each do |mr|
-       max = mr.score if mr.score > max
-       min = mr.score if mr.score < min
+       max = mr.scores if mr.scores > max
+       min = mr.scores if mr.scores < min
       end
       match.match_results.each do |mr|
       if max == min
         mr.points = 1
-      elsif mr.score == max
+      elsif mr.scores == max
         mr.points = 2
       else
-        mr.score == 0
+        mr.scores == 0
+        mr.points = 0
       end
-      mr.team.score += mr.points
+      mr.team.update(score: mr.team.score + mr.points)
       end
     end
   end

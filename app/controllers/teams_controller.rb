@@ -2,11 +2,7 @@ class TeamsController < ApplicationController
   before_action :season_active
 
   def index
-    @teams = Team.all
-  end
-
-  def index_classification
-
+    @teams = Team.order(:id)
   end
 
   def new

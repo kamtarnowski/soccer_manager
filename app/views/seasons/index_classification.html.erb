@@ -1,11 +1,15 @@
-<table class="table table-responsive">
+<table class="table table-responsive table-hover">
   <tr>
     <th>Miejsce</th>
     <th>Nazwa Drużyny</th>
     <th>Punkty</th>
   </tr>
-  <tr>
-    <td></td>
-  </tr>
 
+  <% @teams.each do |team| %>
+  <tr>
+    <td><%= team.place %></td>
+    <td><%= team.name %></td>
+    <td><%= team.score %></td>
+  </tr>
+  <% end %>
 </table>

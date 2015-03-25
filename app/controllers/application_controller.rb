@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include RoundsHelper
   include SeasonsHelper
+  include TeamsHelper
 
   def set_cache_buster
     response.headers["Cache-Control"] = "no-store"

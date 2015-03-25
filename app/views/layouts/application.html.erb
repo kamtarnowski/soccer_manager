@@ -18,9 +18,5 @@
     <%= js add_gritter(value, flash[key], :image => key, :title => "Komunikat:", nodom_wrap: true) %>
 <% end %>
 
-<% if Rails.env.development? %>
-<%= debug(params) %>
-<% end %>
-
 </body>
 </html>

@@ -1,6 +1,6 @@
-<div class="jumbotron">Terminarz:</div>
+<div class="jumbotron"><h2>Terminarz:</h2></div>
 
-<table class="table table-responsive">
+<table class="table table-responsive table-hover">
   <tr>
     <th>Runda</th>
     <th>Status</th>
@@ -21,10 +21,19 @@
   <% end %>
 </table>
 
-<hr>
+<div class="jumbotron" style="margin-top: 100px"><h2>Klasyfikacja Drużyn:</h2></div>
+<table class="table table-responsive table-hover">
+    <tr>
+      <th>Miejsce</th>
+      <th>Nazwa Drużyny</th>
+      <th>Punkty</th>
+    </tr>
 
-<div class="jumbotron">Klasyfikacja Drużyn:</div>
-<table class="table table-responsive">
-
-
+    <% @teams.each do |team| %>
+        <tr>
+          <td><%= team.place %></td>
+          <td><%= team.name %></td>
+          <td><%= team.score %></td>
+        </tr>
+    <% end %>
 </table>
