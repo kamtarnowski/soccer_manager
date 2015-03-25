@@ -5,7 +5,7 @@ class Team < ActiveRecord::Base
   validates :name, presence: true, length: { minimum: 3 }, uniqueness: true
 
   def inactive_season
-    raise 'Sezon jest już rozpoczęty' if Season.find(1).status == 'active'
+    raise 'Sezon jest już rozpoczęty.' if Season.find(1).status == 'active'
   end
 
   # include Comparable

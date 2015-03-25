@@ -7,11 +7,10 @@ class SeasonsController < ApplicationController
   end
 
   def new
-
     MatchResult.delete_all
-    Team.delete_all
     Match.delete_all
     Round.delete_all
+    Team.delete_all
     Season.find(1).update(status: 'inactive')
     flash[:notice] = 'Przed Sezonem'
     redirect_to teams_path

@@ -12,10 +12,10 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if @team.save
-      flash[:notice] = 'Dodano Drużynę'
+      flash[:notice] = 'Dodano Drużynę.'
       redirect_to teams_path
     else
-      flash.now[:notice] = 'Nie dodano Drużyny'
+      flash.now[:notice] = 'Nie dodano Drużyny.'
       render 'new'
     end
   end
@@ -27,10 +27,10 @@ class TeamsController < ApplicationController
   def update
     @team = Team.find(params[:id])
     if @team.update(team_params)
-      flash[:notice] = 'Zaktualizowano Drużynę'
+      flash[:notice] = 'Zaktualizowano Drużynę.'
       redirect_to root_path
     else
-      flash.now[:notice] = 'Nie zaktualizowano Drużyny'
+      flash.now[:notice] = 'Nie zaktualizowano Drużyny.'
       render :edit
     end
   end
@@ -38,10 +38,10 @@ class TeamsController < ApplicationController
   def destroy
     @team = Team.find(params[:id])
     if @team.delete
-      flash[:notice] = 'Usunięto Drużynę'
+      flash[:notice] = 'Usunięto Drużynę.'
       redirect_to :back
     else
-      flash[:notice] = 'Wystąpił problem z usunięciem Drużyny'
+      flash[:notice] = 'Wystąpił problem z usunięciem Drużyny.'
       redirect_to :back
     end
   end
