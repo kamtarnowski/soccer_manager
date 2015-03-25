@@ -21,7 +21,7 @@
 
 <%= link_to 'Klasyfikacja Drużyn', classification_path, class: 'btn btn-primary btn-large', style: 'float:right' %>
 
-<% if Round.active_rounds.blank? %>
+<% if Round.active_rounds.blank? && Round.count != 0 %>
     <p>Rozegrano wszystkie kolejki, przejdź do podsumowania.</p><br>
 <%= link_to "Podsumowanie", seasons_path, class: 'btn btn-default' %>
 <% end %>

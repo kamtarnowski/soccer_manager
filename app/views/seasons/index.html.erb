@@ -37,3 +37,7 @@
         </tr>
     <% end %>
 </table>
+
+<% if Round.active_rounds.blank? && Round.count != 0 %>
+    <%= link_to 'Nowy Sezon', new_season_path, class: 'btn btn-large btn-danger' %>
+<% end %>
