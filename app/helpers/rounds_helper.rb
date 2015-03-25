@@ -19,7 +19,7 @@ module RoundsHelper
     if number == 1
       @round = Round.create(status: 'open', number: number)
     else
-      @round = Round.create(status: 'incaccessible', number: number)
+      @round = Round.create(status: 'inaccessible', number: number)
     end
     @list = Team.all
     @list.each do |team|
