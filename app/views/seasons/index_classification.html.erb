@@ -13,3 +13,10 @@
   </tr>
   <% end %>
 </table>
+
+<%= link_to 'Kolejki spotkań', rounds_index_path, class: 'btn btn-primary btn-large', style: 'float:right' %>
+
+<% if Round.active_rounds.blank? %>
+    <p>Rozegrano wszystkie kolejki, przejdź do podsumowania.</p><br>
+    <%= link_to "Podsumowanie", seasons_path, class: 'btn btn-default' %>
+    <% end %>

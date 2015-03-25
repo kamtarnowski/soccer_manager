@@ -18,6 +18,6 @@ module TeamsHelper
   # end
 
   def sort_by_place
-    Team.all.to_a.group_by(&:score).to_a.map(&:last).each_with_index { |t, index| t.each { |team| team.update(place: index + 1)}}
+    Team.all.to_a.group_by(&:score).to_a.sort_by(&:first).map(&:last).reverse.each_with_index { |t, index| t.each { |team| team.update(place: index + 1)}}
   end
 end

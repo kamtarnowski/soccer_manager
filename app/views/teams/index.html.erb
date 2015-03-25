@@ -18,7 +18,7 @@
 
 <% if Team.count >= 4 && Team.count%2 == 0 %>
 
-<%= button_to('Rozpocznij Sezon', post_active_path(status: 'active'), :class => 'btn btn-large btn-primary')  %>
+<%= button_to('Rozpocznij Sezon', post_active_path(status: 'active'), :class => 'btn btn-large btn-primary', style: 'float: right')   %>
 
 <% end %>
 
