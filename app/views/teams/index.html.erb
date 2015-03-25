@@ -1,4 +1,4 @@
-<div class="jumbotron" style="text-align: center"><h2>Przed Sezonem:</h2></div>
+<div class="jumbotron" style="text-align: center"><h2>PRZED SEZONEM</h2></div>
 
 <table class="table table-responsive">
   <tr>
@@ -18,9 +18,11 @@
 </table>
 <%= link_to 'Nowa drużyna', new_team_path, :class => 'btn btn-large btn-default' %>
 
+<% unless Team.count >= 4 && Team.count%2 == 0 %>
+    <p>Zbyt mała ilość drużyn (minimum 4), bądź ich liczba jest nieparzysta.</p>
+<% end %>
+
 <% if Team.count >= 4 && Team.count%2 == 0 %>
-
 <%= button_to('Rozpocznij Sezon', post_active_path(status: 'active'), :class => 'btn btn-large btn-primary', style: 'float: right')   %>
-
 <% end %>
 
